@@ -5,8 +5,11 @@ import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import "./utils/passport.config.js";
 import passport from "passport";
+import "./utils/passportJwt.config.js";
+import "./utils/passportGoogle.config.js";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
 dotenv.config();
 const port = process.env.PORT;
@@ -20,8 +23,36 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(passport.initialize());
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://localhost:27017/fulAuthDB",
+      collectionName: "sessions",
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  })
+);
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use("/api/auth", authRouter);
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/auth/google/success",
+    failureRedirect: "/auth/google/failure",
+  })
+);
 
 app.listen(port, () => console.log(`Server is running at port:${port}`));
