@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import "./utils/passport.config.js";
+import passport from "passport";
 
 dotenv.config();
 const port = process.env.PORT;
@@ -18,6 +20,7 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use(passport.initialize());
 
 app.use("/api/auth", authRouter);
 

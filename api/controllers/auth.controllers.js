@@ -196,5 +196,21 @@ export const resetPass = async (req, res) => {
 };
 
 export const checkAuth = async (req, res) => {
-  res.send("checkAuth");
+  const user = req.user;
+  try {
+    if (!user) {
+      return res
+        .status(401)
+        .json({ success: false, message: "your not authenticated!" });
+    }
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "you're authenticated",
+        user: { user: { ...user._doc, password: undefined } },
+      });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };
