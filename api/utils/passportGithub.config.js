@@ -1,27 +1,25 @@
-import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import GoogleUser from "../models/GoogleUser.js";
 import passport from "passport";
+import { Strategy as GitHubStrategy } from "passport-github2";
+import GithubUser from "../models/GithubUser.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-const googleClientId = process.env.GOOGLE_CLIENT_ID;
-const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
 passport.use(
-  new GoogleStrategy(
+  new GitHubStrategy(
     {
-      clientID: googleClientId,
-      clientSecret: googleClientSecret,
-      callbackURL: "http://localhost:3000/auth/google/callback",
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/github/callback",
+      scope: ["email", "profile"],
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
-        const user = await GoogleUser.findOne({ googleId: profile.id });
+        const user = await GithubUser.findOne({ githubId: profile.id });
         if (!user) {
-          const newUser = new GoogleUser({
-            googleId: profile.id,
+          const newUser = new GithubUser({
+            githubId: profile.id,
             username: profile.displayName,
-            email: profile.emails[0].value,
             isVerified: true,
             lastLogin: new Date(),
           });
@@ -43,7 +41,7 @@ passport.serializeUser(function (user, done) {
 
 //fetches session details using session id
 passport.deserializeUser(function (id, done) {
-  GoogleUser.findById(id)
+  GithubUser.findById(id)
     .then((user) => done(null, user))
     .catch((err) => done(err, null));
 });

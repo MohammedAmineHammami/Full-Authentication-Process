@@ -8,6 +8,7 @@ import cors from "cors";
 import passport from "passport";
 import "./utils/passportJwt.config.js";
 import "./utils/passportGoogle.config.js";
+import "./utils/passportGithub.config.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 

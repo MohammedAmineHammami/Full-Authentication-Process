@@ -22,9 +22,8 @@ authRouter.get(
   passport.authenticate("jwt", { session: false }),
   checkAuth
 );
-//google routes
+//google strategy
 
-//redirect to choose google account page
 authRouter.get(
   "/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
@@ -36,11 +35,27 @@ authRouter.get(
     failureRedirect: "http://localhost:3001/login",
   }),
   (req, res) => {
+    console.log(req.session);
     res.redirect("http://localhost:3001/dashboard");
   }
 );
 
-authRouter.get("/google-logout", (req, res, next) => {
+//github strategy
+
+authRouter.get("/github", passport.authenticate("github"));
+
+authRouter.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: "http://localhost:3001/github",
+  }),
+  (req, res) => {
+    res.redirect("http://localhost:3001/dashboard");
+  }
+);
+
+//Oauth logout
+authRouter.get("/oauth-logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);

@@ -5,7 +5,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:3000/auth/google-logout");
+      await axios.get("http://localhost:3000/auth/oauth-logout");
       navigate("/login");
     } catch (err) {
       console.log(err);
