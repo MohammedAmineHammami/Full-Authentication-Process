@@ -203,13 +203,11 @@ export const checkAuth = async (req, res) => {
         .status(401)
         .json({ success: false, message: "your not authenticated!" });
     }
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "you're authenticated",
-        user: { user: { ...user._doc, password: undefined } },
-      });
+    res.status(200).json({
+      success: true,
+      message: "you're authenticated",
+      user: { user: { ...user._doc, password: undefined } },
+    });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }

@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: ["http://localhost:3001"],
     credentials: true,
   })
 );
@@ -29,30 +29,17 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/fulAuthDB",
+      mongoUrl: "mongodb://localhost:27017/fullAuthDB",
       collectionName: "sessions",
     }),
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 15 * 60 * 60 * 1000,
     },
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/api/auth", authRouter);
-
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
-
-app.get(
-  "/auth/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/auth/google/success",
-    failureRedirect: "/auth/google/failure",
-  })
-);
+app.use("/auth", authRouter);
 
 app.listen(port, () => console.log(`Server is running at port:${port}`));

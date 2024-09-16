@@ -18,9 +18,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
+    googleId: {
       type: String,
       required: true,
+      sparse: true,
+    },
+    password: {
+      type: String,
       validate: {
         validator: (v) =>
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
@@ -37,6 +41,7 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
     verificationCode: String,
     verificationCodeExpireAt: Date,
     resetToken: String,

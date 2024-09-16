@@ -1,4 +1,4 @@
-import passportGoogleOauth20 from "passport-google-oauth20";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import User from "../models/User.js";
 import passport from "passport";
 import dotenv from "dotenv";
@@ -7,27 +7,31 @@ dotenv.config();
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
-const GoogleStrategy = passportGoogleOauth20.Strategy;
 passport.use(
   new GoogleStrategy(
     {
       clientID: googleClientId,
       clientSecret: googleClientSecret,
-      callbackURL: "http://localhost:3001/auth/google/callback",
+      callbackURL: "http://localhost:3000/auth/google/callback",
     },
-    function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        //create user if we don't have
+    async function (accessToken, refreshToken, profile, done) {
+      try {
+        const user = await User.findOne({ googleId: profile.id });
         if (!user) {
-          let newUser = new UserModel({
+          const user = new User({
             googleId: profile.id,
             username: profile.displayName,
+            email: profile.emails[0].value,
+            isVerified: true,
+            lastLogin: new Date(),
           });
-          newUser.save();
-          return cb(err, newUser);
+          await user.save();
+          done(null, user);
         }
-        return cb(err, user);
-      });
+        done(null, user);
+      } catch (err) {
+        done(err, null);
+      }
     }
   )
 );
