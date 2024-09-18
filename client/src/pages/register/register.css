@@ -1,0 +1,199 @@
+.loginPageContainer {
+    background-image: url("../../assets/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+}
+
+.loginSection {
+    width: 70%;
+    height: 90%;
+    background-color: rgb(250, 247, 247);
+    border-radius: 1rem;
+    box-shadow: 1px 1px 1rem rgba(129, 129, 129, 0.685) , -1px -1px 0.2rem rgba(129, 129, 129, 0.685);
+    display: flex;
+    
+}
+
+.loginRightSide {
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem; 
+    background-image:url("../../assets/bgImg.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.loginLeftSide {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginLeftSideheader {
+    height: 15%;
+    text-align: center;
+}
+
+.loginTitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #FD8F2D;
+    color: white;
+    font-size: 2.5rem;
+    border-radius: 0.3rem;
+}
+
+.loginSubTitle {
+    font-family: cursive;
+}
+
+.registerForm {
+    background-color: #392D39;
+    color: white;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2%;
+    padding-left: 5%;
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+}
+
+.registerForm input {
+    width: 90%;
+    height: 10%;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    border: none;
+}
+
+.registerForm label {
+    font-size: 1.1rem;
+    font-family: cursive;  
+}
+
+.signInBtn:hover {
+    background-color: #FD8F2D;
+    color:white
+}
+
+.loginFormBtns {
+  margin-top: 2%;
+  width: 90%;
+  height: 22%;
+}
+
+.loginBottomSection {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size:1rem;
+    font-weight: bold;
+}
+
+.rememberMe {
+    width: 50%;;
+    display: flex;
+    align-items: center;
+}
+
+.rememberMe input {
+    width: 20px;
+    height: 20px;
+    accent-color: #FD8F2D;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+    color: #FD8F2D;
+}
+
+.errorSection {
+    width: 90%;
+    height: 10%;
+    background-color: white;
+    color: #ff0000;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+.registerForm button {
+    margin-top: 2%;
+    width: 90%;
+    border-radius: 0.6rem;
+    height: 12%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.oauthBtns  {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
+    margin-top: 3%;
+}
+
+.signInWithGoogle {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
+}
+
+.signInWithGithub {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
+}
+
+.signInWithGoogle:hover {
+    background-color: #FD8F2D;
+    border-radius: 0.3rem;
+}
+
+.signInWithGithub:hover {
+    background-color: #FD8F2D;
+    border-radius: 0.3rem;
+}
+
+.loginRedirectMsg {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 3%;
+}
+
+.redirectToRegister {
+    text-decoration: none;
+    color: #FD8F2D;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin-top: 1%;
+    text-decoration: underline;
+}
+
+.redirectToRegister:hover {
+    transform: scale(1.05);
+}

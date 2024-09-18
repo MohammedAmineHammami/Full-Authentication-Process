@@ -206,7 +206,7 @@ export const checkAuth = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "you're authenticated",
-      user: { user: { ...user._doc, password: undefined } },
+      user: { ...user._doc, password: undefined },
     });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

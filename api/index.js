@@ -6,9 +6,9 @@ import authRouter from "./routes/auth.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import passport from "passport";
-import "./utils/passportJwt.config.js";
-import "./utils/passportGoogle.config.js";
-import "./utils/passportGithub.config.js";
+import "./passport/passportJwt.config.js";
+import "./passport/passportGoogle.config.js";
+import "./passport/passportGithub.config.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
