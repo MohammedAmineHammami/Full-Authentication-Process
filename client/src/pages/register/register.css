@@ -1,4 +1,4 @@
-.loginPageContainer {
+.registerPageContainer {
     background-image: url("../../assets/bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -11,7 +11,7 @@
 
 }
 
-.loginSection {
+.registerSection {
     width: 70%;
     height: 90%;
     background-color: rgb(250, 247, 247);
@@ -21,19 +21,19 @@
     
 }
 
-.loginRightSide {
+.registerRightSide {
     width: 50%;
     height: 100%;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem; 
-    background-image:url("../../assets/bgImg.jpg") ;
+    background-image:url("../../assets/registerBg.jpg") ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
 }
 
-.loginLeftSide {
+.registerLeftSide {
     width: 50%;
     height: 100%;
     display: flex;
@@ -42,12 +42,15 @@
     justify-content: center;
 }
 
-.loginLeftSideheader {
-    height: 15%;
-    text-align: center;
+.registerLeftSideheader {
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1%;
 }
 
-.loginTitle {
+.registerTitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #FD8F2D;
     color: white;
@@ -55,7 +58,7 @@
     border-radius: 0.3rem;
 }
 
-.loginSubTitle {
+.registerSubTitle {
     font-family: cursive;
 }
 
@@ -63,11 +66,13 @@
     background-color: #392D39;
     color: white;
     width: 70%;
-    height: 70%;
+    height: 73%;
+    padding: 1%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2%;
+    gap: 1%;
     padding-left: 5%;
     box-sizing: border-box;
     border-radius: 0.6rem;
@@ -91,13 +96,13 @@
     color:white
 }
 
-.loginFormBtns {
+.registerFormBtns {
   margin-top: 2%;
   width: 90%;
   height: 22%;
 }
 
-.loginBottomSection {
+.registerBottomSection {
     width: 90%;
     display: flex;
     align-items: center;
@@ -142,16 +147,36 @@
     font-weight: bold;
 }
 
-.oauthBtns  {
+.registerOrSignInWith {
     width: 90%;
-    height: 10%;
-    display: flex;
-    border-radius: 0.6rem;
-    font-size: 1.1rem;
+    text-align: center;
     margin-top: 3%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.signInWithGoogle {
+.registerOrSignInWith .or {
+    width: 8%;
+    height: 100%;
+    background-color: #FD8F2D;
+    border-radius: 50%;
+    border: 0.1rem solid white;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerOrSignInWith hr {
+    position:absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.signUpWithGoogle {
     width: 50%;
     height: 100%;
     display: flex;
@@ -160,7 +185,7 @@
     gap: 7%;
 }
 
-.signInWithGithub {
+.signUpWithGithub {
     width: 50%;
     height: 100%;
     display: flex;
@@ -169,31 +194,31 @@
     gap: 7%;
 }
 
-.signInWithGoogle:hover {
+.signUpWithGoogle:hover {
     background-color: #FD8F2D;
     border-radius: 0.3rem;
 }
 
-.signInWithGithub:hover {
+.signUpWithGithub:hover {
     background-color: #FD8F2D;
     border-radius: 0.3rem;
 }
 
-.loginRedirectMsg {
+.registerRedirectMsg {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
-.redirectToRegister {
+.redirectToLogin {
     text-decoration: none;
     color: #FD8F2D;
     font-size: 1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    margin-top: 1%;
+    margin-top: 0.5%;
     text-decoration: underline;
 }
 
-.redirectToRegister:hover {
+.redirectToLogin:hover {
     transform: scale(1.05);
 }

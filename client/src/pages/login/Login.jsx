@@ -37,8 +37,11 @@ function Login() {
             <button type="submit" className="signInBtn">
               Sign in
             </button>
-            <div>
-              <b>-Or signIn with-</b>
+            <div className="orSignInWith">
+              <hr />
+              <div className="or">
+                <b>Or</b>
+              </div>
             </div>
 
             <div className="oauthBtns">

@@ -8,14 +8,14 @@ import { VscGithubInverted } from "react-icons/vsc";
 function Register() {
   const { error } = useAuthStore();
   return (
-    <div className="loginPageContainer">
-      <div className="loginSection">
-        <div className="loginLeftSide">
-          <div className="loginLeftSideheader">
-            <b className="loginTitle">WELCOME BACK</b>
-            <p className="loginSubTitle">
-              welcome back! Please enter your details.
-            </p>
+    <div className="registerPageContainer">
+      <div className="registerSection">
+        <div className="registerLeftSide">
+          <div className="registerLeftSideheader">
+            <b className="registerTitle">GET START NOW</b>
+            <span className="registerSubTitle">
+              enter your credentials to access your account!
+            </span>
           </div>
           <form className="registerForm">
             <label>Email:</label>
@@ -24,14 +24,14 @@ function Register() {
             <input type="email" placeholder="Enter your email" />
             <label>Password:</label>
             <input type="password" placeholder="password" />
-            <div className="loginBottomSection">
+            <div className="registerBottomSection">
               <div className="rememberMe">
                 <input type="checkbox" />
                 <span>Remember me</span>
               </div>
               <span className="forgotPassword">Forgot Password</span>
             </div>
-            {error ? (
+            {false ? (
               <div className="errorSection">
                 <span>{error}</span>
               </div>
@@ -40,23 +40,30 @@ function Register() {
               Sign in
             </button>
 
+            <div className="registerOrSignInWith">
+              <hr />
+              <div className="or">
+                <b>Or</b>
+              </div>
+            </div>
+
             <div className="oauthBtns">
-              <div className="signInWithGoogle">
+              <div className="signUpWithGoogle">
                 <BsGoogle size={25} />
                 <b>Google</b>
               </div>
-              <div className="signInWithGithub">
+              <div className="signUpWithGithub">
                 <VscGithubInverted size={25} />
                 <b>Github</b>
               </div>
             </div>
           </form>
-          <b className="loginRedirectMsg">
-            Don't have an account? <span></span>
+          <b className="registerRedirectMsg">
+            You have an account? <span></span>
           </b>
-          <Link className="redirectToRegister">Sign up for free</Link>
+          <Link className="redirectToLogin">Sign In here</Link>
         </div>
-        <div className="loginRightSide"></div>
+        <div className="registerRightSide"></div>
       </div>
     </div>
   );

@@ -1,0 +1,106 @@
+.forgetPassContainer {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../assets/bg.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgetPassSection {
+    width: 35%;
+    height: 75%;
+    background-color: rgba(255, 255, 255, 0.325);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.forgetPassHeader {
+    width: 70%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #392D39;
+    color: white;
+    gap: 3%;
+}
+
+.forgetPassHeader b {
+    font-size: 2.1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.forgetPassHeader span {
+    font-family: cursive;
+}
+
+.forgetPassForm {
+    width: 60%;
+    height: 36%;
+    background-color: #392D39;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    gap: 4%;
+}
+
+.forgetPassForm label {
+    font-size: 1.3rem;
+    font-family:cursive;
+    color: white;
+}
+
+.forgetPassForm input {
+    width: 90%;
+    height: 20%;
+    border-radius: 0.4rem;
+}
+
+.forgetPassForm button {
+    width:92.5%;
+    height: 20%;
+    border-radius: 0.4rem;
+    background-color: #FD8F2D;
+    color:white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.forgetPassForm button:hover {
+    background-color: #fe7f10;
+    cursor: pointer;
+}
+
+.forgetPassGoBack {
+    width: 40%;
+    height: 10%;
+    background-color: #392D39;
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+}
+
+.forgetPassGoBack span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family:cursive;
+    color: white;
+}
+
+.goBackIcon {
+    color: white;
+}

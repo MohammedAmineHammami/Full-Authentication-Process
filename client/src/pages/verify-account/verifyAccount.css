@@ -1,0 +1,117 @@
+.verifyAccountContainer {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../assets/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+.verificationSectionDiv {
+    width: 60%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.325);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.verificationHeader {
+    width: 70%;
+    background-color: #392D39;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1rem;
+
+}
+
+.verificationHeader b {
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.verificationHeader p {
+    width: 90%;
+    height: 60%;
+    background-color: #392D39;
+    color: white;
+    text-align: center;
+}
+
+.codeContainer {
+    width: 90%;
+    height: 45%;
+    background-color: #392D39;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.singleInputContenair {
+    height: 90%;
+    width: 15%;
+    background-color: #FD8F2D;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleInput {
+    width: 99%;
+    height: 99%;
+    background-color: #292129;
+    color: #FD8F2D;
+    border-radius: 1rem;
+    font-size:9rem;
+    text-align:center;
+   
+}
+
+.verifyBtn {
+    width: 50%;
+    height: 10%;
+    background-color: #392D39;
+    color: white;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+}
+
+.verifyBtn:hover {
+   transform: scale(1.02);
+   background-color: #292129;
+}
+
+.resendMsg {
+    font-size: 1.2rem;
+    font-family: cursive;
+    color: white;
+}
+
+.resendBtn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    font-family: cursive;
+}
+
+.resendBtn:hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+    cursor: pointer;
+}
