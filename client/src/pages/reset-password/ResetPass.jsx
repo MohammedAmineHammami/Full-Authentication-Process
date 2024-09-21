@@ -1,19 +1,25 @@
 import React from "react";
 import "./resetPass.css";
-
+import { MdArrowCircleLeft } from "react-icons/md";
 function ResetPass() {
   return (
     <div className="resetPassContainer">
       <div className="resetPassSection">
         <div className="resetPassHeader">
-          <b>Forgot Password?</b>
-          <span>No worries,we'll send you reset instructions.</span>
+          <b>Reset Password?</b>
+          <span>
+            Your new password must be different then the previously used.
+          </span>
         </div>
-        <form className="resetBtn">
-          <label>Email:</label>
-          <button>Send</button>
+        <form className="resetPassForm">
+          <label>New Password:</label>
+          <input type="password" placeholder="New password" />
+          <label>Confirm Password:</label>
+          <input type="password" placeholder="New password" />
+          <button>Reset Password</button>
         </form>
-        <div className="resetGoBack">
+        <div className="resetPassGoBack">
+          <MdArrowCircleLeft className="goBackIcon" />
           <span>Back to login</span>
         </div>
       </div>

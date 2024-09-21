@@ -58,7 +58,9 @@ function Login() {
           <b className="loginRedirectMsg">
             Don't have an account? <span></span>
           </b>
-          <Link className="redirectToRegister">Sign up for free</Link>
+          <Link to={"/register"} className="redirectToRegister">
+            Sign up for free
+          </Link>
         </div>
         <div className="loginRightSide"></div>
       </div>

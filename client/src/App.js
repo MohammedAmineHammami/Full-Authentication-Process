@@ -7,6 +7,7 @@ import ResetPass from "./pages/reset-password/ResetPass.jsx";
 import ForgotPass from "./pages/forgot-password/ForgotPass.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import { useAuthStore } from "./store/useAuthStore.js";
+import SuccessReset from "./pages/resetSuccess/SuccessReset.jsx";
 
 //Protect routes
 const ProtectedRoutes = ({ children }) => {
@@ -63,7 +64,22 @@ function App() {
             </RedirectToHome>
           }
         />
-        <Route path="/reset-pass" element={<ResetPass />} />
+        <Route
+          path="/reset-pass"
+          element={
+            <RedirectToHome>
+              <ResetPass />
+            </RedirectToHome>
+          }
+        />
+        <Route
+          path="/success-pass-reset"
+          element={
+            <RedirectToHome>
+              <SuccessReset />
+            </RedirectToHome>
+          }
+        />
         <Route
           path="/dashboard"
           element={

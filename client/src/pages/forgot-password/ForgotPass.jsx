@@ -11,11 +11,11 @@ function ForgotPass() {
         </div>
         <form className="forgetPassForm">
           <label>Email:</label>
-          <input type="email" />
+          <input type="email" placeholder="Enter your email here" />
           <button>Send</button>
         </form>
         <div className="forgetPassGoBack">
-          <MdArrowCircleLeft size={30} className="goBackIcon" />
+          <MdArrowCircleLeft className="goBackIcon" />
           <span>Back to login</span>
         </div>
       </div>

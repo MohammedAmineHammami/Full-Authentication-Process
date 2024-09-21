@@ -135,6 +135,9 @@
     color: #ff0000;
     overflow: hidden;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

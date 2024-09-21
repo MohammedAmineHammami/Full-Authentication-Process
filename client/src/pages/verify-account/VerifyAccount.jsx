@@ -14,7 +14,7 @@ function VerifyAccount() {
         </div>
         <div className="codeContainer">
           {[...Array(6)].map((el, i) => {
-            return <VerificationCodeInput />;
+            return <VerificationCodeInput key={i} />;
           })}
         </div>
         <button className="verifyBtn">Verify</button>

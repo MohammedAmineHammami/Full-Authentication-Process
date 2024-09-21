@@ -24,7 +24,7 @@ export const register = async (req, res) => {
         .json({ success: false, message: "user is already exist..!" });
     }
     const verificationCode = Math.floor(Math.random() * 900000 + 100000);
-    const verificationCodeExpireAt = Date.now() + 60 * 60 * 1000; //1h
+    const verificationCodeExpireAt = Date.now() + 24 * 60 * 60 * 1000; //1h
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     const user = new User({

@@ -1,4 +1,4 @@
-.resetPassContainer {
+.successPassResetContainer {
     width: 100vw;
     height: 100vh;
     background-image: url("../../assets/bg.jpg");
@@ -10,9 +10,9 @@
     align-items: center;
 }
 
-.resetPassSection {
+.successPassResetSection {
     width: 35%;
-    height: 75%;
+    height: 60%;
     background-color: rgba(255, 255, 255, 0.325);
     border-radius: 1rem;
     display: flex;
@@ -23,9 +23,9 @@
     box-shadow: 0.1rem 0.1rem 0.25rem rgb(255, 255, 255) , -0.1rem -0.1rem 0.25rem rgb(255, 255, 255);
 }
 
-.resetPassHeader {
+.successPassResetHeader {
     width: 70%;
-    height: 20%;
+    height: 26%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,61 +36,22 @@
     gap: 3%;
 }
 
-.resetPassHeader b {
+.successPassResetHeader b {
     font-size: 2.1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fe7f10;
 }
 
-.resetPassHeader span {
+.successPassResetHeader span {
     font-family: cursive;
     text-align: center;
-    width: 84.8%;
+    width: 86%;
 }
 
-.resetPassForm {
-    width: 60%;
-    height: 45%;
-    background-color: #392D39;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2%;
-    gap: 3%;
-}
 
-.resetPassForm label {
-    font-size: 1.3rem;
-    font-family:cursive;
-    color: white;
-}
-
-.resetPassForm input {
-    width: 90%;
-    height: 20%;
-    border-radius: 0.4rem;
-    font-size: 1rem;
-}
-
-.resetPassForm button {
-    width:92.5%;
-    height: 20%;
-    border-radius: 0.4rem;
-    background-color: #FD8F2D;
-    color:white;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.resetPassForm button:hover {
-    background-color: #fe7f10;
-    cursor: pointer;
-}
-
-.resetPassGoBack {
+.successPassResetGoBack {
     width: 40%;
     height: 10%;
-    background-color: #392D39;
     border-radius: 0.3rem;
     display: flex;
     align-items: center;
@@ -98,19 +59,36 @@
     gap: 3%;
 }
 
-.resetPassGoBack:hover {
+.successPassResetGoBack:hover {
     transform: scale(1.05);
 }
 
-.resetPassGoBack span {
+.successPassResetGoBack span {
     font-size: 1.2rem;
     font-weight: bold;
     font-family:cursive;
     color: white;
 }
 
-.goBackIcon {
-    color: #FD8F2D;
-    font-size: 2rem;
+.successPassResetContinue {
+    width: 55%;
+    height: 12%;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: cursive;
+    color: white;
+    background-color: #fe7f10;
 }
 
+.successPassResetContinue:hover {
+    transform: scale(1.01);
+    background-color: #fa7908;
+}
+
+.goBackIcon {
+    color: #392D39;
+}

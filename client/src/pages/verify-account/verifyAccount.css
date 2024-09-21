@@ -12,7 +12,7 @@
 
 .verificationSectionDiv {
     width: 60%;
-    height: 70%;
+    height: 75%;
     background-color: rgba(255, 255, 255, 0.325);
     border-radius: 2rem;
     display: flex;
@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     gap: 2%;
+    box-shadow: 0.1rem 0.1rem 0.25rem rgb(255, 255, 255) , -0.1rem -0.1rem 0.25rem rgb(255, 255, 255);
 }
 
 .verificationHeader {
@@ -38,7 +39,7 @@
     font-size: 3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    color: white;
+    color:#FD8F2D;
 }
 
 .verificationHeader p {
@@ -74,7 +75,7 @@
     width: 99%;
     height: 99%;
     background-color: #292129;
-    color: #FD8F2D;
+    color: white;
     border-radius: 1rem;
     font-size:9rem;
     text-align:center;
@@ -86,6 +87,7 @@
     height: 10%;
     background-color: #392D39;
     color: white;
+    background-color: #FD8F2D;
     border-radius: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
@@ -94,7 +96,6 @@
 
 .verifyBtn:hover {
    transform: scale(1.02);
-   background-color: #292129;
 }
 
 .resendMsg {
