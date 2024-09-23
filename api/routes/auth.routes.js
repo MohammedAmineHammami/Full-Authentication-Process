@@ -35,21 +35,24 @@ authRouter.get(
     failureRedirect: "http://localhost:3001/login",
   }),
   (req, res) => {
-    console.log(req.session);
-    res.redirect("http://localhost:3001/dashboard");
+    res.redirect(`http://localhost:3001/dashboard`);
   }
 );
 
 //github strategy
 
-authRouter.get("/github", passport.authenticate("github"));
+authRouter.get(
+  "/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
 
 authRouter.get(
   "/github/callback",
   passport.authenticate("github", {
-    failureRedirect: "http://localhost:3001/github",
+    failureRedirect: "http://localhost:3001/login",
   }),
   (req, res) => {
+    console.log(req.user); //i can get the user here
     res.redirect("http://localhost:3001/dashboard");
   }
 );
@@ -62,8 +65,12 @@ authRouter.get("/oauth-logout", (req, res, next) => {
     }
     res.clearCookie("connect.sid");
     req.session.destroy();
-    res.redirect("http://localhost:3001/");
   });
+});
+
+authRouter.get("/success", (req, res) => {
+  res.status(200).json({ success: true, user: req.user });
+  console.log(req.user);
 });
 
 export default authRouter;

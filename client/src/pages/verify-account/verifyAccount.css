@@ -43,11 +43,15 @@
 }
 
 .verificationHeader p {
-    width: 90%;
+    width: 80%;
     height: 60%;
     background-color: #392D39;
     color: white;
     text-align: center;
+}
+
+.verificationHeader span {
+    color: #FD8F2D;
 }
 
 .codeContainer {
@@ -79,8 +83,13 @@
     border-radius: 1rem;
     font-size:9rem;
     text-align:center;
-   
+    border: 0.2rem solid white;
 }
+
+.singleInput:focus {
+    outline: 0.2rem solid #FD8F2D;
+}
+
 
 .verifyBtn {
     width: 50%;

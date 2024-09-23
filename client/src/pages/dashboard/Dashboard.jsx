@@ -1,7 +1,16 @@
 import React from "react";
 import "./dashboard.css";
+import { useAuthStore } from "../../store/useAuthStore.js";
+import moment from "moment";
 
 function Dashboard() {
+  const { logout, user, oAuthLogout } = useAuthStore();
+
+  const handleLogout = async () => {
+    await logout();
+    await oAuthLogout();
+  };
+
   return (
     <div className="dashboardContainer">
       <div className="dashboardSection">
@@ -10,25 +19,28 @@ function Dashboard() {
           <div className="subContainer">
             <div>
               <span>Username:</span>
-              <b>Mohamed Amine Hammami</b>
+              <b>{user.username}</b>
             </div>
             <div>
               <span>Email:</span>
-              <b>mohamedaminehammami1994@gmail.com</b>
+              <b>{user.email}</b>
             </div>
             <div>
-              <span>Status:</span>
-              <b>Verified</b>
+              <span>isVerified:</span>
+              <b>{String(user.isVerified)}</b>
             </div>
             <div>
               <span>LastLogin:</span>
-              <b>{new Date().getHours}</b>
+              <b>{moment(user.lastLogin).fromNow()}</b>
             </div>
             <div>
               <span>Created At:</span>
-              <b>{new Date().getFullYear()}</b>
+              <b>{moment(user.createdAt).calendar()}</b>
             </div>
           </div>
+          <button className="logoutBtn" onClick={handleLogout}>
+            LogOut
+          </button>
         </div>
       </div>
     </div>

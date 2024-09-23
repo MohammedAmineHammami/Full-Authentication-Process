@@ -5,7 +5,7 @@ import {
   PASSWORD_RESET_SUCCESS_TEMPLATE,
 } from "./email.templates.js";
 
-const clientUrl = "http://localhost:3001/api/auth/reset-pass/";
+const clientUrl = "http://localhost:3001/reset-pass";
 export const sendVerificationEmail = async (email, code) => {
   const recipients = [{ email }];
 
@@ -45,6 +45,7 @@ export const sendWelcomeEmail = async (email, name) => {
 
 export const sendResetPassRequestEmail = async (token, email) => {
   const recipients = [{ email }];
+  console.log("resetUrl", `${clientUrl}/${token}`);
   try {
     mailtrap_client
       .send({

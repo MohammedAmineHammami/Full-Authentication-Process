@@ -71,9 +71,11 @@ export const verifyEmail = async (req, res) => {
     user.verificationCodeExpireAt = undefined;
     await user.save();
     await sendWelcomeEmail(user.email, user.name);
-    res
-      .status(200)
-      .json({ success: true, message: "you are account is veriffied." });
+    res.status(200).json({
+      success: true,
+      message: "you are account is veriffied.",
+      user: { ...user._doc, password: undefined },
+    });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -95,13 +97,15 @@ export const login = async (req, res) => {
     }
     const isValid = bcrypt.compareSync(password, user.password);
     if (!isValid) {
-      return res
-        .status(400)
-        .json({ success: false, message: "invalid credentials..!" });
+      return res.status(400).json({
+        success: false,
+        message: "invalid credentials..!",
+      });
     }
     user.lastLogin = new Date();
     user.save();
     genTokenAndSetCookie(res, user._id);
+    console.log(res.cookies);
     res.status(200).json({
       success: true,
       message: "welcome to your account!",
@@ -138,8 +142,8 @@ export const forgotPass = async (req, res) => {
     }
     const resetToken = uuidv4();
     const resetTokenExpireAt = Date.now() + 3600000; //1h
-    (user.resetToken = resetToken),
-      (user.resetTokenExpireAt = resetTokenExpireAt);
+    user.resetToken = resetToken;
+    user.resetTokenExpireAt = resetTokenExpireAt;
     await user.save();
     await sendResetPassRequestEmail(resetToken, email);
     res
@@ -153,6 +157,7 @@ export const forgotPass = async (req, res) => {
 export const resetPass = async (req, res) => {
   const { newPass, confirmPass } = req.body;
   const { resetToken } = req.params;
+  console.log("resettoken", resetToken);
   try {
     if (!(newPass && confirmPass)) {
       return res
@@ -175,9 +180,10 @@ export const resetPass = async (req, res) => {
       resetTokenExpireAt: { $gt: Date.now() },
     });
     if (!user) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Invalid token..!" });
+      return res.status(401).json({
+        success: false,
+        message: "Invalid token..!",
+      });
     }
     const salt = bcrypt.genSaltSync(10);
     const newPassHash = bcrypt.hashSync(newPass, salt);

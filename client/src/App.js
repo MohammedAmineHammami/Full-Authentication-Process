@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
@@ -12,10 +12,11 @@ import SuccessReset from "./pages/resetSuccess/SuccessReset.jsx";
 //Protect routes
 const ProtectedRoutes = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  if (!user.isVerified) {
+  if (!user?.isVerified) {
     return <Navigate to="/verify-account" replace />;
   }
   return children;
@@ -23,12 +24,17 @@ const ProtectedRoutes = ({ children }) => {
 //redirect to home
 const RedirectToHome = ({ children }) => {
   const { user, isAuthenticated } = useAuthStore();
-  if (isAuthenticated && user.isVerified) {
+  if (isAuthenticated && user?.isVerified) {
     return <Navigate to={"/dashboard"} replace />;
   }
   return children;
 };
 function App() {
+  const { onSuccess } = useAuthStore();
+  console.log("App component render");
+  useEffect(() => {
+    onSuccess();
+  }, [onSuccess]);
   return (
     <div>
       <Routes>
@@ -65,7 +71,7 @@ function App() {
           }
         />
         <Route
-          path="/reset-pass"
+          path="/reset-pass/:id"
           element={
             <RedirectToHome>
               <ResetPass />

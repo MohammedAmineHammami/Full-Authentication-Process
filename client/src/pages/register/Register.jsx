@@ -15,8 +15,12 @@ function Register() {
   };
   const submitRegisterData = async (e) => {
     e.preventDefault();
-    await register(registerData);
-    navigate("/verify-account");
+    try {
+      await register(registerData);
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="registerPageContainer">

@@ -32,11 +32,12 @@
 .dashboardFilter h1 {
      font-size: 2.3rem;
      font-family: Verdana, Geneva, Tahoma, sans-serif;
-     background-color: #FD8F2D;
+     background-color: #392D39;
      color: white;
      height: 15%;
      width: 95%;
      border-radius: 1rem;
+     border: 0.2rem solid white;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -75,4 +76,20 @@
     font-weight: bold;
     font-family: cursive;
     color: #392D39;
+}
+
+.logoutBtn {
+    width: 25%;
+    height: 10%;
+    border-radius: 1rem;
+    border: 0.3rem solid white;
+    margin-top: 1rem;
+    background-color: #392D39;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.logoutBtn:hover {
+transform: scale(1.05);
 }

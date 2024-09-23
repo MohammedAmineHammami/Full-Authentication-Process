@@ -13,7 +13,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,7 +38,6 @@ app.use(
     },
   })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/auth", authRouter);

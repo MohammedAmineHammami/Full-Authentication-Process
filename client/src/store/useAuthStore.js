@@ -12,6 +12,7 @@ export const useAuthStore = create((set) => ({
   message: null,
   login: async (loginBody) => {
     set({ isLoading: true, error: null });
+    console.log("from login");
     try {
       const res = await axios.post(`${baseUrl}/login`, loginBody);
       set({
@@ -22,6 +23,7 @@ export const useAuthStore = create((set) => ({
       });
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+      throw err;
     }
   },
 
@@ -37,16 +39,25 @@ export const useAuthStore = create((set) => ({
       });
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+      throw err;
     }
   },
 
   verifyAccount: async (code) => {
     set({ error: null, isLoading: true });
     try {
-      const res = await axios.post(`${baseUrl}/verify-email`, code);
-      set({ isLoading: false, message: res.data.message });
+      const res = await axios.post(`${baseUrl}/verify-email`, {
+        verificationCode: code,
+      });
+      set({
+        isLoading: false,
+        user: res.data.user,
+        isAuthenticated: true,
+        message: res.data.message,
+      });
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+      throw err;
     }
   },
 
@@ -54,19 +65,26 @@ export const useAuthStore = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const res = await axios.post(`${baseUrl}/logout`);
-      set({ isLoading: false, message: res.data.message });
+      set({
+        isLoading: false,
+        user: null,
+        isAuthenticated: false,
+        message: res.data.message,
+      });
     } catch (err) {
-      set({ error: err.response.data.message, isLoading: false });
+      set({ error: err.response?.data.message, isLoading: false });
+      throw err;
     }
   },
 
   forgotPass: async (email) => {
     set({ isLoading: true, error: null });
     try {
-      const res = await axios.post(`${baseUrl}/forgot-pass`, email);
+      const res = await axios.post(`${baseUrl}/forgot-pass`, { email: email });
       set({ isLoading: false, message: res.data.message });
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+      throw err;
     }
   },
 
@@ -74,12 +92,13 @@ export const useAuthStore = create((set) => ({
     set({ error: null, isLoading: true });
     try {
       const res = await axios.post(
-        `{baseUrl}/reset-pass/${resetToken}`,
+        `${baseUrl}/reset-pass/${resetToken}`,
         resetBody
       );
       set({ isLoading: false, message: res.data.message });
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+      throw err;
     }
   },
 
@@ -98,29 +117,45 @@ export const useAuthStore = create((set) => ({
         error: err.response.data.message,
         isLoading: false,
       });
+      throw err;
     }
   },
 
-  loginWithGoogle: () => {
-    window.open(`${baseUrl}/auth/google`, "_self");
-  },
-
-  loginWithGithub: () => {
-    window.open(`${baseUrl}/auth/github`, "_self");
-  },
-
-  oauthLogOut: async () => {
+  loginWithGoogle: async () => {
     set({ error: null, isLoading: true });
     try {
-      const res = await axios.get(`${baseUrl}/oauth-logout`);
-      set({
-        user: null,
-        isAuthenticated: false,
-        isLoading: false,
-        message: res.data.message,
-      });
+      window.open(`${baseUrl}/google`, "_self");
     } catch (err) {
       set({ error: err.response.data.message, isLoading: false });
+    }
+  },
+
+  loginWithGithub: async () => {
+    set({ error: null, isLoading: true });
+    try {
+      window.open(`${baseUrl}/github`, "_self");
+    } catch (err) {
+      set({ error: err.response.data.message, isLoading: false });
+    }
+  },
+
+  onSuccess: async () => {
+    set({ error: null, isLoading: true });
+    try {
+      const res = await axios.get(`${baseUrl}/success`);
+      set({ user: res?.data?.user, isAuthenticated: true, isLoading: false });
+    } catch (err) {
+      set({ error: err?.response?.data?.message, isLoading: false });
+      throw err;
+    }
+  },
+
+  oAuthLogout: async () => {
+    set({ error: null, isLoading: true });
+    try {
+      await axios.get(`${baseUrl}/oauth-logout`);
+    } catch (err) {
+      set({ error: err.response?.data.message, isLoading: false });
     }
   },
 }));
